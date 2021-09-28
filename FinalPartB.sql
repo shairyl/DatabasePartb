@@ -160,3 +160,5 @@ PRIMARY KEY (invoiceID),
 FOREIGN KEY (ownerID) REFERENCES animalOwner(ownerID),
 FOREIGN KEY (examinationID) REFERENCES vetExamination(examinationID)
 );
+
+rem it works!
