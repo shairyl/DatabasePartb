@@ -1,5 +1,5 @@
 rem Shairyl & Ray part B & C 3
-rem trying github 2.1
+rem trying github 2.5
 
 drop table vetExamination cascade constraints;
 drop table animalPatients cascade constraints;
