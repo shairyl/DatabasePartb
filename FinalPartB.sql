@@ -40,6 +40,12 @@ CONSTRAINT animalOwner_ownerID_pk PRIMARY KEY (ownerID),
 CONSTRAINT animalOwner_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
 
+
+INSERT INTO animalOwner VALUES('1','Bruce','Wayne','1342','hillsborough rd','Mt Roskill','Auckland','1041','111111111', 1);
+INSERT INTO animalOwner VALUES('2','Clark','Kent','1231','Arthur rd','Mt Eden','Auckland','1234','222222222', 2);
+INSERT INTO animalOwner VALUES('3','Diana','Prince','1643','Naruto rd','New Lynn','Auckland','1261','3333333333', 1);
+INSERT INTO animalOwner VALUES('4','John','Constantine','3451','Sasuke rd','Penrose','Auckland','1635','44444444', 2);
+
 CREATE TABLE vetStaff(
 staffID NUMBER(5) NOT NULL,
 clinicID NUMBER(5) NOT NULL,
@@ -110,6 +116,16 @@ treatmentCharge NUMBER(10) NOT NULL,
 CONSTRAINT vetTreatment_treatmentID_pk PRIMARY KEY (treatmentID) 
 );
 
+INSERT INTO vetTreatment VALUES('1','tranquilizer',25);
+INSERT INTO vetTreatment VALUES('2','Xray',45);
+INSERT INTO vetTreatment VALUES('3','Diabetes Course',100);
+INSERT INTO vetTreatment VALUES('4','Spray',5);
+INSERT INTO vetTreatment VALUES('6','Cream',80);
+INSERT INTO vetTreatment VALUES('7','anitibiotic course',60);
+INSERT INTO vetTreatment VALUES('8','feline hysterectomy',400);
+INSERT INTO vetTreatment VALUES('9','Vaccination',20);
+
+
 CREATE TABLE animalPatients(
 animalID NUMBER(5) NOT NULL, 
 animalType VARCHAR2(30) NOT NULL, 
@@ -122,6 +138,14 @@ CONSTRAINT animalPatients_animalID_pk PRIMARY KEY (animalID),
 CONSTRAINT animalPatients_ownerID_fk FOREIGN KEY (ownerID) REFERENCES animalOwner(ownerID),
 CONSTRAINT animalPatients_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
+
+INSERT INTO animalPatients VALUES(1,'Chihuahua','Always active',to_date('12-oct-2008','dd-mon-yyyy'), to_date('11-aug-2021','dd-mon-yyyy'),1,2);
+INSERT INTO animalPatients VALUES(2,'Labrador','Aggressive',to_date('4-apr-2009','dd-mon-yyyy'), to_date('3-may-2021','dd-mon-yyyy'), 2,1);
+INSERT INTO animalPatients VALUES(3,'Boxer','Barks a lot',to_date('2-feb-2010','dd-mon-yyyy'), to_date('21-nov-2021','dd-mon-yyyy'), 3, 1);
+INSERT INTO animalPatients VALUES(4,'Golden Retriever','has a broken limb',to_date('11-mar-2015','dd-mon-yyyy'), to_date('28-oct-2021','dd-mon-yyyy'), 4,2);
+INSERT INTO animalPatients VALUES(5,'German Shepherd','has a damaged eye',to_date('17-feb-2018','dd-mon-yyyy'), to_date('09-nov-2021','dd-mon-yyyy'), 1,3);
+INSERT INTO animalPatients VALUES(6,'Pit Bull','has a damaged ear',to_date('14-oct-2019','dd-mon-yyyy'), to_date('27-nov-2021','dd-mon-yyyy'), 3,3);
+INSERT INTO animalPatients VALUES(7,'Husky','has a damaged nose',to_date('29-mar-2020','dd-mon-yyyy'), to_date('26-aug-2021','dd-mon-yyyy'), 4, 2');
 
 
 CREATE TABLE vetExamination(
@@ -138,6 +162,13 @@ CONSTRAINT vetExam_staffID_fk FOREIGN KEY (staffID) REFERENCES vetStaff(staffID)
 CONSTRAINT vetExam_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
 
+INSERT INTO vetExamination VALUES('1',to_date('11-oct-2021','dd-mon-yyyy'),12:15:21,'No Treatment Needed',1, 1, 2);
+INSERT INTO vetExamination VALUES('2',to_date('12-jan-2021','dd-mon-yyyy'),13:30:34,'Give vaccine',2, 1 ,1);
+INSERT INTO vetExamination VALUES('3',to_date('21-aug-2021','dd-mon-yyyy'),16:23:35,'Ear needs treatment',5, 2, 1);
+INSERT INTO vetExamination VALUES('4',to_date('14-jan-2021','dd-mon-yyyy'),14:14:37,'eye needs treatment',4, 3, 1);
+INSERT INTO vetExamination VALUES('5',to_date('13-may-2021','dd-mon-yyyy'),21:12:39,'nose needs treatment',7, 4, 2);
+
+
 CREATE TABLE animalTreatment(
 examinationID NUMBER(5) NOT NULL, 
 treatmentID NUMBER(5) NOT NULL, 
@@ -149,6 +180,15 @@ CONSTRAINT animalTreat_pk PRIMARY KEY (examinationID, treatmentID),
 CONSTRAINT animalTreat_examinationID_fk FOREIGN KEY (examinationID) REFERENCES vetExamination(examinationID),
 CONSTRAINT animalTreat_treatmentID_fk FOREIGN KEY (treatmentID) REFERENCES vetTreatment(treatmentID)
 );
+
+INSERT INTO animalTreatment VALUES('1','t001',to_date('1-jan-1999','dd-mon-yyyy'),to_date('1-jan-1999','dd-mon-yyyy'),2,null);
+INSERT INTO animalTreatment VALUES('2','t003',to_date('3-feb-2002','dd-mon-yyyy'),to_date('4-feb-2002','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES('3','t004',to_date('15-oct-2001','dd-mon-yyyy'),to_date('19-oct-2001','dd-mon-yyyy'),3,'complicated');
+INSERT INTO animalTreatment VALUES('1','t002',to_date('20-nov-1998','dd-mon-yyyy'),to_date('21-nov-1998','dd-mon-yyyy'),1,'minor');
+INSERT INTO animalTreatment VALUES('4','t009',to_date('7-mar-2001','dd-mon-yyyy'),to_date('7-mar-2001','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES('4','t010',to_date('19-apr-2001','dd-mon-yyyy'),to_date('19-apr-2001','dd-mon-yyyy'),2,null);
+INSERT INTO animalTreatment VALUES('5','t007',to_date('10-may-1999','dd-mon-yyyy'),to_date('10-may-1999','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES('5','t008',to_date('10-may-1999','dd-mon-yyyy'),to_date('10-may-1999','dd-mon-yyyy'),1,'Perfectly done');
 
 CREATE TABLE invoice(
 invoiceID NUMBER(5) NOT NULL, 
