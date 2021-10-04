@@ -26,10 +26,11 @@ clinicEmail VARCHAR2(30) NOT NULL,
 CONSTRAINT vetClinic_clinicID_pk PRIMARY KEY (clinicID)
 );
 
+INSERT INTO vetClinic VALUES(1,'181','Onewa Road','Birkenhead','Auckland',0626,094812376,'birkenhead@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(2,'580','New North Road','Morningside','Auckland',1021,098159978,'morningside@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(3,'3162','Great North Road','New Lynn','Auckland',0600,096007684,'newlynn@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(4,'359','Church Street','Penrose','Auckland',1061,095257655,'penrose@kiwivet.co.nz');
 
-INSERT INTO vetClinic VALUES(1,'Bruce','Wayne','1342','hillsborough rd',1111,111,'1041');
-INSERT INTO vetClinic VALUES(2,'Brdfguce','fdgfdWayne','1342','hillsborough rd',1111,111,'1041');
-INSERT INTO vetClinic VALUES(3,'asdsad','fdgfdWayne','1342','hillsborough rd',1111,111,'1041');
 
 CREATE TABLE animalOwner(
 ownerID NUMBER(5) NOT NULL, 
@@ -74,6 +75,30 @@ CONSTRAINT vetStaff_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clin
 CONSTRAINT vetStaff_managerID_fk FOREIGN KEY (managerID) REFERENCES vetStaff(staffID)
 );
 
+INSERT INTO vetStaff VALUES(1,1,null,'Josh','Murdoch','4A','Holdaway Avenue','Northcote','Auckland','0627','0224055402',to_date('13-oct-1986','dd-mon-yyyy'), 'M', 7384751, 'Manager',104000);
+INSERT INTO vetStaff VALUES(2,1,1,'Lucy','Yang','24','Jersey Avenue','Mt Albert','Auckland','1025','0214037401',to_date('07-jun-1993','dd-mon-yyyy'), 'F', 7382653, 'Vet Nurse',65000);
+INSERT INTO vetStaff VALUES(3,1,1,'Jasmine','Luke','54B','Sequoia Place','Sunnynook','Auckland','0620','020433745',to_date('19-jun-1991','dd-mon-yyyy'), 'F', 3597754, 'Veterinarian',73000);
+INSERT INTO vetStaff VALUES(4,1,1,'Reece','Graham','1','Parkhead Place','Rosedale','Auckland','0632','0210264749',to_date('25-nov-1987','dd-mon-yyyy'), 'M', 8102855,'Veterinarian',73000);
+INSERT INTO vetStaff VALUES(5,1,1,'Brian','Logan','86','Grant Street','Mt Albert','Auckland','1025','0221188172',to_date('22-feb-1983','dd-mon-yyyy'), 'M', 2747333, 'Veterinarian',73000);
+INSERT INTO vetStaff VALUES(6,1,1,'Jessica','Lawn','33A','Beatrice Avenue','Hillcrest','Auckland','0627','0220230222',to_date('09-jun-1992','dd-mon-yyyy'), 'F', 8547730,'Receptionist',55000);
+
+INSERT INTO vetStaff VALUES(7,2,null,'Blake','Crouch','4A','Owens Road','Epson','Auckland','1023','0222212545',to_date('13-oct-1986','dd-mon-yyyy'), 'M', 7384751, 'Manager',110000);
+INSERT INTO vetStaff VALUES(8,2,7,'Bella','Gallagher','9','Edendale Crescent','Mt Eden','Auckland','1024','022196487',to_date('27-dec-1991','dd-mon-yyyy'), 'F', 3847746, 'Veterinarian',85000);
+INSERT INTO vetStaff VALUES(9,2,7,'Tim','OSullivan','4','Martin Ave','Mt Albert','Auckland','1025','022196402',to_date('01-dec-1990','dd-mon-yyyy'), 'M', 8455011, 'Veterinarian',82000);
+INSERT INTO vetStaff VALUES(10,2,7,'Ruth','OSullivan','4','Martin Ave','Mt Albert','Auckland','1025','022196414',to_date('19-jan-1987','dd-mon-yyyy'), 'F', 1239322, 'Veterinarian',85000);
+INSERT INTO vetStaff VALUES(11,2,7,'Isabella','Rose','51','Webster Street','Mt Roskill','Auckland','1041','0221045407',to_date('23-jun-1989','dd-mon-yyyy'), 'F', 8547743,'Receptionist',56000);
+
+INSERT INTO vetStaff VALUES(12,3,null,'Jeff','Owens','4A','Owens Road','Epson','Auckland','1023','0222212545',to_date('21-nov-1984','dd-mon-yyyy'), 'M', 3958444, 'Manager',110000);
+INSERT INTO vetStaff VALUES(13,3,12,'Tim','Musk','17C','Lancing Road','Sandringham','Auckland','1025','0214007601',to_date('08-jun-1993','dd-mon-yyyy'), 'F', 1242256, 'Veterinarian',65000);
+INSERT INTO vetStaff VALUES(14,3,12,'Brian','Logan','86','Grant Street','Mt Albert','Auckland','1025','0221188172',to_date('01-feb-1983','dd-mon-yyyy'), 'M', 8395677, 'Veterinarian',73000);
+INSERT INTO vetStaff VALUES(15,3,12,'Elizabeth','Blake','4','Martin Ave','Mt Albert','Auckland','1025','022196402',to_date('01-dec-1990','dd-mon-yyyy'), 'F', 4493744, 'Receptionist',55000);
+
+INSERT INTO vetStaff VALUES(16,4,null,'Anne','Simons','26','Moana Avenue','Onehunga','Auckland','1061','0204705672',to_date('01-mar-1980','dd-mon-yyyy'), 'F', 5593805, 'Manager',95400);
+INSERT INTO vetStaff VALUES(17,4,16,'Elan','Jeffrey','11A','Higgs Road','Mt Wellington','Auckland','1060','021345879',to_date('26-apr-1992','dd-mon-yyyy'), 'M', 4673354, 'Veterinarian',77500);
+INSERT INTO vetStaff VALUES(18,4,16,'Otis','Grace','19B','Jersey Ave','Mt Albert','Auckland','1025','022666345',to_date('19-jan-1987','dd-mon-yyyy'), 'M', 5322256, 'Veterinarian',85000);
+INSERT INTO vetStaff VALUES(19,4,16,'Leanne','Khanthee','3','Pukeranga Crescent','Ellerslie','Auckland','1051','021004376',to_date('19-sep-1997','dd-mon-yyyy'), 'F', 9837466, 'Receptionist',49000);
+
+
 CREATE TABLE pharmacy(
 drugID NUMBER(5) NOT NULL,
 drugName VARCHAR2(25) NOT NULL,
@@ -83,6 +108,11 @@ MethodofAdministration VARCHAR2(20) NOT NULL,
 CONSTRAINT pharmacy_drugID_pk PRIMARY KEY (drugID)
 );
 
+INSERT INTO pharmacy VALUES(1,'acepromazine','sedative, tranquilizer, and antiemetic', '25MG', 'oral');
+INSERT INTO pharmacy VALUES(2,'diazepam','benzodiazepine used to treat status epilepticus', '10MG', 'oral');
+INSERT INTO pharmacy VALUES(3,'hydromorphone','opioid analgesic used as a premedication', '2.5MG', 'intravenous');
+INSERT INTO pharmacy VALUES(4,'clavaseptin','antibiotic', '500MG', 'oral');
+
 CREATE TABLE item(
 itemID NUMBER(5) NOT NULL,
 itemName VARCHAR2(25) NOT NULL,
@@ -90,6 +120,12 @@ itemDescription VARCHAR2(255) NOT NULL,
 isSurgical CHAR(1) NOT NULL,
 CONSTRAINT item_itemID_pk PRIMARY KEY (itemID)
 );
+
+INSERT INTO item VALUES(1,'10cm Bandage','Cohesive wrap for small animals', 'n');
+INSERT INTO item VALUES(2,'15cm Bandage','Cohesive wrap for small animals', 'n');
+INSERT INTO item VALUES(3,'Bandage Scissors','Stainless Steel scissors', 'n');
+INSERT INTO item VALUES(4,'Surgical Set','19 Piece General Surgery Pack', 'y');
+
 
 CREATE TABLE itemStock(
 clinicID NUMBER(5) NOT NULL,
@@ -164,7 +200,7 @@ staffID NUMBER(5) NOT NULL,
 clinicID NUMBER(5) NOT NULL,
 CONSTRAINT vetExam_examinationID_pk PRIMARY KEY (examinationID),
 CONSTRAINT vetExam_animalID_fk FOREIGN KEY (animalID) REFERENCES animalPatients(animalID),
-CONSTRAINT vetExam_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetStaff(staffID),
+CONSTRAINT vetExam_staffID_fk FOREIGN KEY (clinicID) REFERENCES vetStaff(staffID),
 CONSTRAINT vetExam_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
 
@@ -217,3 +253,8 @@ SELECT * FROM animaltreatment;
 SELECT * FROM invoice;
 SELECT * FROM vettreatment;
 SELECT * FROM animalpatients;
+
+SELECT * FROM vetClinic;
+SELECT * FROM vetStaff;
+SELECT * FROM pharmacy;
+SELECT * FROM item;
