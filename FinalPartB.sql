@@ -237,15 +237,19 @@ invoiceID NUMBER(5) NOT NULL,
 paymentDate DATE NOT NULL, 
 paymentDetails VARCHAR2(255) NULL,  
 examinationID NUMBER(5) NOT NULL,
+ownerID NUMBER(5) NOT NULL,
 CONSTRAINT invoice_invoiceID_pk PRIMARY KEY (invoiceID),
 CONSTRAINT invoice_examinationID_fk FOREIGN KEY (examinationID) REFERENCES vetExamination(examinationID)
 );
 
-INSERT INTO Invoice VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'cash',1);
-INSERT INTO Invoice VALUES(2,to_date('12-jan-2021','dd-mon-yyyy'),'credit',2);
-INSERT INTO Invoice VALUES(3,to_date('21-aug-2021','dd-mon-yyyy'),'cash',3);
-INSERT INTO Invoice VALUES(4,to_date('14-jan-2021','dd-mon-yyyy'),'cash',4);
-INSERT INTO Invoice VALUES(5,to_date('13-may-2021','dd-mon-yyyy'),'credit',5);
+INSERT INTO Invoice VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'cash',1, (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 1));
+
+INSERT INTO Invoice VALUES(2,to_date('12-jan-2021','dd-mon-yyyy'),'credit',2,  (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 2));
+INSERT INTO Invoice VALUES(3,to_date('21-aug-2021','dd-mon-yyyy'),'cash',3,  (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 3));
+INSERT INTO Invoice VALUES(4,to_date('14-jan-2021','dd-mon-yyyy'),'cash',4,  (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 4));
+INSERT INTO Invoice VALUES(5,to_date('13-may-2021','dd-mon-yyyy'),'credit',5,  (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 5));
+
+
 
 SELECT * FROM animalowner;
 SELECT * FROM vetexamination;
