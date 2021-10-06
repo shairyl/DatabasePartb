@@ -112,6 +112,7 @@ INSERT INTO pharmacy VALUES(1,'acepromazine','sedative, tranquilizer, and antiem
 INSERT INTO pharmacy VALUES(2,'diazepam','benzodiazepine used to treat status epilepticus', '10MG', 'oral');
 INSERT INTO pharmacy VALUES(3,'hydromorphone','opioid analgesic used as a premedication', '2.5MG', 'intravenous');
 INSERT INTO pharmacy VALUES(4,'clavaseptin','antibiotic', '500MG', 'oral');
+INSERT INTO pharmacy VALUES(5,'gabapentin','strong pain reliever', '300MG', 'oral');
 
 CREATE TABLE item(
 itemID NUMBER(5) NOT NULL,
@@ -125,6 +126,7 @@ INSERT INTO item VALUES(1,'10cm Bandage','Cohesive wrap for small animals', 'n')
 INSERT INTO item VALUES(2,'15cm Bandage','Cohesive wrap for small animals', 'n');
 INSERT INTO item VALUES(3,'Bandage Scissors','Stainless Steel scissors', 'n');
 INSERT INTO item VALUES(4,'Surgical Set','19 Piece General Surgery Pack', 'y');
+INSERT INTO item VALUES(5,'Nail Clipper','Clipper For Small To Medium Dogs', 'n');
 
 
 CREATE TABLE itemStock(
@@ -139,6 +141,30 @@ CONSTRAINT itemStock_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(cli
 CONSTRAINT itemStock_itemID_fk FOREIGN KEY (itemID) REFERENCES item(itemID)
 );
 
+INSERT INTO itemStock VALUES(1,1,54,15,50,3);
+INSERT INTO itemStock VALUES(1,2,30,15,50,4);
+INSERT INTO itemStock VALUES(1,3,11,5,10,15);
+INSERT INTO itemStock VALUES(1,4,6,3,5,55);
+INSERT INTO itemStock VALUES(1,5,8,5,10,27);
+
+INSERT INTO itemStock VALUES(2,1,35,15,50,3);
+INSERT INTO itemStock VALUES(2,2,19,15,50,4);
+INSERT INTO itemStock VALUES(2,3,14,5,10,15);
+INSERT INTO itemStock VALUES(2,4,5,3,5,55);
+INSERT INTO itemStock VALUES(2,5,9,5,10,27);
+
+INSERT INTO itemStock VALUES(3,1,48,15,50,3);
+INSERT INTO itemStock VALUES(3,2,43,15,50,4);
+INSERT INTO itemStock VALUES(3,3,12,5,10,15);
+INSERT INTO itemStock VALUES(3,4,7,3,5,55);
+INSERT INTO itemStock VALUES(3,5,6,5,10,27);
+
+INSERT INTO itemStock VALUES(4,1,36,15,50,3);
+INSERT INTO itemStock VALUES(4,2,57,15,50,4);
+INSERT INTO itemStock VALUES(4,3,13,5,10,15);
+INSERT INTO itemStock VALUES(4,4,6,3,5,55);
+INSERT INTO itemStock VALUES(4,5,13,5,10,27);
+
 CREATE TABLE pharmacyStock(
 clinicID NUMBER(5) NOT NULL,
 drugID NUMBER(5) NOT NULL,
@@ -150,6 +176,30 @@ CONSTRAINT pharmaStock_pk PRIMARY KEY (clinicID, drugID),
 CONSTRAINT pharmaStock_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID),
 CONSTRAINT pharmaStock_drugID_fk FOREIGN KEY (drugID) REFERENCES pharmacy(drugID)
 );
+
+INSERT INTO pharmacyStock VALUES(1,1,147,50,200,2);
+INSERT INTO pharmacyStock VALUES(1,2,98,50,150,1);
+INSERT INTO pharmacyStock VALUES(1,3,43,30,50,4);
+INSERT INTO pharmacyStock VALUES(1,4,122,75,100,2);
+INSERT INTO pharmacyStock VALUES(1,5,89,50,200,2);
+
+INSERT INTO pharmacyStock VALUES(2,1,71,50,200,2);
+INSERT INTO pharmacyStock VALUES(2,2,135,50,150,1);
+INSERT INTO pharmacyStock VALUES(2,3,74,30,50,4);
+INSERT INTO pharmacyStock VALUES(2,4,99,75,100,2);
+INSERT INTO pharmacyStock VALUES(2,5,170,50,200,2);
+
+INSERT INTO pharmacyStock VALUES(3,1,187,50,200,2);
+INSERT INTO pharmacyStock VALUES(3,2,55,50,150,1);
+INSERT INTO pharmacyStock VALUES(3,3,57,30,50,4);
+INSERT INTO pharmacyStock VALUES(3,4,150,75,100,2);
+INSERT INTO pharmacyStock VALUES(3,5,132,50,200,2);
+
+INSERT INTO pharmacyStock VALUES(4,1,162,50,200,2);
+INSERT INTO pharmacyStock VALUES(4,2,122,50,150,1);
+INSERT INTO pharmacyStock VALUES(4,3,76,30,50,4);
+INSERT INTO pharmacyStock VALUES(4,4,94,75,100,2);
+INSERT INTO pharmacyStock VALUES(4,5,85,50,200,2);
 
 CREATE TABLE vetTreatment(
 treatmentID NUMBER(5) NOT NULL, 
@@ -258,3 +308,5 @@ SELECT * FROM vetClinic;
 SELECT * FROM vetStaff;
 SELECT * FROM pharmacy;
 SELECT * FROM item;
+SELECT * FROM pharmacyStock;
+SELECT * FROM itemStock;
