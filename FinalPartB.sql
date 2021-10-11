@@ -31,7 +31,6 @@ INSERT INTO vetClinic VALUES(2,'580','New North Road','Morningside','Auckland',1
 INSERT INTO vetClinic VALUES(3,'3162','Great North Road','New Lynn','Auckland',0600,096007684,'newlynn@kiwivet.co.nz');
 INSERT INTO vetClinic VALUES(4,'359','Church Street','Penrose','Auckland',1061,095257655,'penrose@kiwivet.co.nz');
 
-
 CREATE TABLE animalOwner(
 ownerID NUMBER(5) NOT NULL, 
 ownerFirstName VARCHAR2(30) NOT NULL, 
@@ -52,6 +51,8 @@ INSERT INTO animalOwner VALUES(1,'Bruce','Wayne','1342','hillsborough rd','Mt Ro
 INSERT INTO animalOwner VALUES(2,'Clark','Kent','1231','Arthur rd','Mt Eden','Auckland','1234','222222222', 2);
 INSERT INTO animalOwner VALUES(3,'Diana','Prince','1643','Naruto rd','New Lynn','Auckland','1261','3333333333', 1);
 INSERT INTO animalOwner VALUES(4,'John','Constantine','3451','Sasuke rd','Penrose','Auckland','1635','44444444', 2);
+INSERT INTO animalOwner VALUES(5,'John','Constantine','3451','Sasuke rd','Penrose','Auckland','1635','44444444', 2);
+INSERT INTO animalOwner VALUES(6,'Barry','Allen','3451','Metropolis','Hamilton','Hamilton','1635','44444444', 2);
 
 CREATE TABLE vetStaff(
 staffID NUMBER(5) NOT NULL,
@@ -177,6 +178,16 @@ INSERT INTO itemStock VALUES(4,4,6,3,5,55);
 INSERT INTO itemStock VALUES(4,5,13,5,10,27);
 INSERT INTO itemStock VALUES(4,6,2,1,2,650);
 INSERT INTO itemStock VALUES(4,7,8,4,4,70);
+
+
+INSERT INTO itemStock VALUES(5,1,26,15,50,3);
+INSERT INTO itemStock VALUES(5,2,47,15,50,4);
+INSERT INTO itemStock VALUES(5,3,53,5,10,15);
+INSERT INTO itemStock VALUES(5,4,1,3,5,55);
+INSERT INTO itemStock VALUES(5,5,19,5,10,27);
+INSERT INTO itemStock VALUES(5,6,2,10,2,650);
+INSERT INTO itemStock VALUES(5,7,8,2,4,70);
+
 
 CREATE TABLE pharmacyStock(
 clinicID NUMBER(5) NOT NULL,
@@ -316,7 +327,6 @@ CONSTRAINT invoice_examinationID_fk FOREIGN KEY (examinationID) REFERENCES vetEx
 );
 
 INSERT INTO Invoice VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'cash',1, (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 1));
-
 INSERT INTO Invoice VALUES(2,to_date('12-jan-2021','dd-mon-yyyy'),'credit',2,  (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 2));
 INSERT INTO Invoice VALUES(3,to_date('21-aug-2021','dd-mon-yyyy'),'cash',3,  (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 3));
 INSERT INTO Invoice VALUES(4,to_date('14-jan-2021','dd-mon-yyyy'),'cash',4,  (SELECT animalPatients.ownerID FROM vetExamination, animalPatients WHERE vetExamination.animalID = animalPatients.animalID  AND vetExamination.examinationID = 4));
