@@ -30,6 +30,7 @@ INSERT INTO vetClinic VALUES(1,'181','Onewa Road','Birkenhead','Auckland',0626,0
 INSERT INTO vetClinic VALUES(2,'580','New North Road','Morningside','Auckland',1021,098159978,'morningside@kiwivet.co.nz');
 INSERT INTO vetClinic VALUES(3,'3162','Great North Road','New Lynn','Auckland',0600,096007684,'newlynn@kiwivet.co.nz');
 INSERT INTO vetClinic VALUES(4,'359','Church Street','Penrose','Auckland',1061,095257655,'penrose@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(5,'639','Te Rapa Road','Te Rapa','Hamilton',3200,07767543,'terapa@kiwivet.co.nz');
 
 
 CREATE TABLE animalOwner(
@@ -97,6 +98,11 @@ INSERT INTO vetStaff VALUES(16,4,null,'Anne','Simons','26','Moana Avenue','Onehu
 INSERT INTO vetStaff VALUES(17,4,16,'Elan','Jeffrey','11A','Higgs Road','Mt Wellington','Auckland','1060','021345879',to_date('26-apr-1992','dd-mon-yyyy'), 'M', 4673354, 'Veterinarian',77500);
 INSERT INTO vetStaff VALUES(18,4,16,'Otis','Grace','19B','Jersey Ave','Mt Albert','Auckland','1025','022666345',to_date('19-jan-1987','dd-mon-yyyy'), 'M', 5322256, 'Veterinarian',85000);
 INSERT INTO vetStaff VALUES(19,4,16,'Leanne','Khanthee','3','Pukeranga Crescent','Ellerslie','Auckland','1051','021004376',to_date('19-sep-1997','dd-mon-yyyy'), 'F', 9837466, 'Receptionist',49000);
+
+INSERT INTO vetStaff VALUES(20,5,null,'Kyro','Smith','19','Keats Crescent','Enderley','Hamilton','3214','020470345',to_date('26-dec-1987','dd-mon-yyyy'), 'M', 4539805, 'Manager',87000);
+INSERT INTO vetStaff VALUES(21,5,20,'Maria','Collins','11','Craig Place','Fairview Downs','Hamilton','3214','027638503',to_date('02-apr-1997','dd-mon-yyyy'), 'F', 723498, 'Veterinarian Assistant',52000);
+INSERT INTO vetStaff VALUES(22,5,20,'Jessica','Johns','24','Lloyd Drive','Nawton','Hamilton','3200','022823864',to_date('17-oct-1998','dd-mon-yyyy'), 'F', 3246564, 'Veterinarian',82500);
+INSERT INTO vetStaff VALUES(23,5,20,'Jazmin','Boyd','3','Esmae Place','Dinsdale','Hamilton','3204','0204221783',to_date('03-oct-1990','dd-mon-yyyy'), 'F', 982344, 'Receptionist',55200);
 
 
 CREATE TABLE pharmacy(
