@@ -47,7 +47,6 @@ CONSTRAINT animalOwner_ownerID_pk PRIMARY KEY (ownerID),
 CONSTRAINT animalOwner_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
 
-
 INSERT INTO animalOwner VALUES(1,'Bruce','Wayne','1342','hillsborough rd','Mt Roskill','Auckland','1041','111111111', 1);
 INSERT INTO animalOwner VALUES(2,'Clark','Kent','1231','Arthur rd','Mt Eden','Auckland','1234','222222222', 2);
 INSERT INTO animalOwner VALUES(3,'Diana','Prince','1643','Naruto rd','New Lynn','Auckland','1261','3333333333', 1);
@@ -109,7 +108,7 @@ INSERT INTO vetStaff VALUES(26,5,20,'Jessica','Johns','24','Lloyd Drive','Nawton
 INSERT INTO vetStaff VALUES(27,5,20,'Jazmin','Boyd','3','Esmae Place','Dinsdale','Hamilton','3204','0204221783',to_date('03-oct-1990','dd-mon-yyyy'), 'F', 209823443, 'Receptionist',55200);
 INSERT INTO vetStaff VALUES(28,5,20,'Marian','Rowland','35','River Oaks Place','Te Rapa Park','Hamilton','3200','0203141123',to_date('27-feb-1975','dd-mon-yyyy'), 'F', 183246356, 'Veterinarian',75200);
 INSERT INTO vetStaff VALUES(29,5,20,'Eric','McKay','103','Ballance Street','Te Awamutu','Hamilton','3800','0204043147',to_date('12-feb-1989','dd-mon-yyyy'), 'M', 174532891, 'Veterinarian',82800);
-INSERT INTO vetStaff VALUES(30,5,20,'Wendy','Moore','245','Miro Street','Nawton','Hamilton','3200','0269614499',to_date('29-04-1991','dd-mon-yyyy'), 'F', 202091548, 'Receptionist',60500);
+INSERT INTO vetStaff VALUES(30,5,20,'Wendy','Moore','245','Miro Street','Nawton','Hamilton','3200','0269614499',to_date('29-apr-1991','dd-mon-yyyy'), 'F', 202091548, 'Receptionist',60500);
 
 
 CREATE TABLE pharmacy(
@@ -213,13 +212,13 @@ CONSTRAINT pharmaStock_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(c
 CONSTRAINT pharmaStock_drugID_fk FOREIGN KEY (drugID) REFERENCES pharmacy(drugID)
 );
 
-INSERT INTO pharmacyStock VALUES(1,1,147,50,200,2);
+INSERT INTO pharmacyStock VALUES(1,1,51,50,200,2);
 INSERT INTO pharmacyStock VALUES(1,2,98,50,150,1);
 INSERT INTO pharmacyStock VALUES(1,3,43,30,50,4);
 INSERT INTO pharmacyStock VALUES(1,4,122,75,100,2);
-INSERT INTO pharmacyStock VALUES(1,5,89,50,200,2);
+INSERT INTO pharmacyStock VALUES(1,5,58,50,200,2);
 INSERT INTO pharmacyStock VALUES(1,6,104,60,120,3);
-INSERT INTO pharmacyStock VALUES(1,7,101,30,75,1);
+INSERT INTO pharmacyStock VALUES(1,7,41,30,75,1);
 INSERT INTO pharmacyStock VALUES(1,8,180,80,110,1);
 
 INSERT INTO pharmacyStock VALUES(2,1,71,50,200,2);
@@ -228,7 +227,7 @@ INSERT INTO pharmacyStock VALUES(2,3,74,30,50,4);
 INSERT INTO pharmacyStock VALUES(2,4,99,75,100,2);
 INSERT INTO pharmacyStock VALUES(2,5,170,50,200,2);
 INSERT INTO pharmacyStock VALUES(2,6,87,60,120,3);
-INSERT INTO pharmacyStock VALUES(2,7,48,30,75,1);
+INSERT INTO pharmacyStock VALUES(2,7,32,30,75,1);
 
 INSERT INTO pharmacyStock VALUES(3,1,187,50,200,2);
 INSERT INTO pharmacyStock VALUES(3,2,55,50,150,1);
@@ -253,7 +252,7 @@ INSERT INTO pharmacyStock VALUES(5,3,65,30,50,4);
 INSERT INTO pharmacyStock VALUES(5,4,140,75,100,2);
 INSERT INTO pharmacyStock VALUES(5,5,187,50,200,2);
 INSERT INTO pharmacyStock VALUES(5,6,122,60,120,3);
-INSERT INTO pharmacyStock VALUES(5,7,41,30,75,1);
+INSERT INTO pharmacyStock VALUES(5,7,40,30,75,1);
 INSERT INTO pharmacyStock VALUES(5,8,111,80,110,1);
 
 CREATE TABLE vetTreatment(
@@ -347,10 +346,10 @@ CONSTRAINT invoice_invoiceID_pk PRIMARY KEY (invoiceID),
 CONSTRAINT invoice_examinationID_fk FOREIGN KEY (examinationID) REFERENCES vetExamination(examinationID)
 );
 
-INSERT INTO Invoice VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'cash',1, 1);
+INSERT INTO Invoice VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'debit',1, 1);
 INSERT INTO Invoice VALUES(2,to_date('12-jan-2021','dd-mon-yyyy'),'credit',2,  2);
 INSERT INTO Invoice VALUES(3,to_date('21-aug-2021','dd-mon-yyyy'),'cash',3,  1);
-INSERT INTO Invoice VALUES(4,to_date('14-jan-2021','dd-mon-yyyy'),'cash',4,  4);
+INSERT INTO Invoice VALUES(4,to_date('14-jan-2021','dd-mon-yyyy'),'debit',4,  4);
 INSERT INTO Invoice VALUES(5,to_date('13-may-2021','dd-mon-yyyy'),'credit',5,  4);
 
 
