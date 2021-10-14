@@ -76,33 +76,40 @@ CONSTRAINT vetStaff_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clin
 CONSTRAINT vetStaff_managerID_fk FOREIGN KEY (managerID) REFERENCES vetStaff(staffID)
 );
 
-INSERT INTO vetStaff VALUES(1,1,null,'Josh','Murdoch','4A','Holdaway Avenue','Northcote','Auckland','0627','0224055402',to_date('13-oct-1986','dd-mon-yyyy'), 'M', 7384751, 'Manager',104000);
-INSERT INTO vetStaff VALUES(2,1,1,'Lucy','Yang','24','Jersey Avenue','Mt Albert','Auckland','1025','0214037401',to_date('07-jun-1993','dd-mon-yyyy'), 'F', 7382653, 'Vet Nurse',65000);
-INSERT INTO vetStaff VALUES(3,1,1,'Jasmine','Luke','54B','Sequoia Place','Sunnynook','Auckland','0620','020433745',to_date('19-jun-1991','dd-mon-yyyy'), 'F', 3597754, 'Veterinarian',73000);
-INSERT INTO vetStaff VALUES(4,1,1,'Reece','Graham','1','Parkhead Place','Rosedale','Auckland','0632','0210264749',to_date('25-nov-1987','dd-mon-yyyy'), 'M', 8102855,'Veterinarian',73000);
-INSERT INTO vetStaff VALUES(5,1,1,'Brian','Logan','86','Grant Street','Mt Albert','Auckland','1025','0221188172',to_date('22-feb-1983','dd-mon-yyyy'), 'M', 2747333, 'Veterinarian',73000);
-INSERT INTO vetStaff VALUES(6,1,1,'Jessica','Lawn','33A','Beatrice Avenue','Hillcrest','Auckland','0627','0220230222',to_date('09-jun-1992','dd-mon-yyyy'), 'F', 8547730,'Receptionist',55000);
+INSERT INTO vetStaff VALUES(1,1,null,'Josh','Murdoch','4A','Holdaway Avenue','Northcote','Auckland','0627','0224055402',to_date('13-oct-1986','dd-mon-yyyy'), 'M', 738475189, 'Manager',104000);
+INSERT INTO vetStaff VALUES(2,1,1,'Lucy','Yang','24','Jersey Avenue','Mt Albert','Auckland','1025','0214037401',to_date('07-jun-1993','dd-mon-yyyy'), 'F', 738265345, 'Vet Nurse',65000);
+INSERT INTO vetStaff VALUES(3,1,1,'Jasmine','Luke','54B','Sequoia Place','Sunnynook','Auckland','0620','020433745',to_date('19-jun-1991','dd-mon-yyyy'), 'F', 35977543, 'Veterinarian',73000);
+INSERT INTO vetStaff VALUES(4,1,1,'Reece','Graham','1','Parkhead Place','Rosedale','Auckland','0632','0210264749',to_date('25-nov-1987','dd-mon-yyyy'), 'M', 810285556,'Veterinarian',73000);
+INSERT INTO vetStaff VALUES(5,1,1,'Brian','Logan','86','Grant Street','Mt Albert','Auckland','1025','0221188172',to_date('22-feb-1983','dd-mon-yyyy'), 'M', 112747333, 'Veterinarian',73000);
+INSERT INTO vetStaff VALUES(6,1,1,'Jessica','Lawn','33A','Beatrice Avenue','Hillcrest','Auckland','0627','0220230222',to_date('09-jun-1992','dd-mon-yyyy'), 'F', 854773056,'Receptionist',55000);
 
-INSERT INTO vetStaff VALUES(7,2,null,'Blake','Crouch','4A','Owens Road','Epson','Auckland','1023','0222212545',to_date('13-oct-1986','dd-mon-yyyy'), 'M', 7384751, 'Manager',110000);
-INSERT INTO vetStaff VALUES(8,2,7,'Bella','Gallagher','9','Edendale Crescent','Mt Eden','Auckland','1024','022196487',to_date('27-dec-1991','dd-mon-yyyy'), 'F', 3847746, 'Veterinarian',85000);
-INSERT INTO vetStaff VALUES(9,2,7,'Tim','OSullivan','4','Martin Ave','Mt Albert','Auckland','1025','022196402',to_date('01-dec-1990','dd-mon-yyyy'), 'M', 8455011, 'Veterinarian',82000);
-INSERT INTO vetStaff VALUES(10,2,7,'Ruth','OSullivan','4','Martin Ave','Mt Albert','Auckland','1025','022196414',to_date('19-jan-1987','dd-mon-yyyy'), 'F', 1239322, 'Veterinarian',85000);
-INSERT INTO vetStaff VALUES(11,2,7,'Isabella','Rose','51','Webster Street','Mt Roskill','Auckland','1041','0221045407',to_date('23-jun-1989','dd-mon-yyyy'), 'F', 8547743,'Receptionist',56000);
+INSERT INTO vetStaff VALUES(7,2,null,'Blake','Crouch','4A','Owens Road','Epson','Auckland','1023','0222212545',to_date('13-oct-1986','dd-mon-yyyy'), 'M', 738475109, 'Manager',110000);
+INSERT INTO vetStaff VALUES(8,2,7,'Bella','Gallagher','9','Edendale Crescent','Mt Eden','Auckland','1024','022196487',to_date('27-dec-1991','dd-mon-yyyy'), 'F', 38477461, 'Veterinarian',85000);
+INSERT INTO vetStaff VALUES(9,2,7,'Tim','OSullivan','4','Martin Ave','Mt Albert','Auckland','1025','022196402',to_date('01-dec-1990','dd-mon-yyyy'), 'M', 845501132, 'Veterinarian',82000);
+INSERT INTO vetStaff VALUES(10,2,7,'Ruth','OSullivan','4','Martin Ave','Mt Albert','Auckland','1025','022196414',to_date('19-jan-1987','dd-mon-yyyy'), 'F', 123932276, 'Veterinarian',85000);
+INSERT INTO vetStaff VALUES(11,2,7,'Isabella','Rose','51','Webster Street','Mt Roskill','Auckland','1041','0221045407',to_date('23-jun-1989','dd-mon-yyyy'), 'F', 854774388,'Receptionist',56000);
 
-INSERT INTO vetStaff VALUES(12,3,null,'Jeff','Owens','4A','Owens Road','Epson','Auckland','1023','0222212545',to_date('21-nov-1984','dd-mon-yyyy'), 'M', 3958444, 'Manager',110000);
-INSERT INTO vetStaff VALUES(13,3,12,'Tim','Musk','17C','Lancing Road','Sandringham','Auckland','1025','0214007601',to_date('08-jun-1993','dd-mon-yyyy'), 'F', 1242256, 'Veterinarian',65000);
-INSERT INTO vetStaff VALUES(14,3,12,'Brian','Logan','86','Grant Street','Mt Albert','Auckland','1025','0221188172',to_date('01-feb-1983','dd-mon-yyyy'), 'M', 8395677, 'Veterinarian',73000);
-INSERT INTO vetStaff VALUES(15,3,12,'Elizabeth','Blake','4','Martin Ave','Mt Albert','Auckland','1025','022196402',to_date('01-dec-1990','dd-mon-yyyy'), 'F', 4493744, 'Receptionist',55000);
+INSERT INTO vetStaff VALUES(12,3,null,'Jeff','Owens','4A','Owens Road','Epson','Auckland','1023','0222212545',to_date('21-nov-1984','dd-mon-yyyy'), 'M', 395844429, 'Manager',110000);
+INSERT INTO vetStaff VALUES(13,3,12,'Tim','Musk','17C','Lancing Road','Sandringham','Auckland','1025','0214007601',to_date('08-jun-1993','dd-mon-yyyy'), 'F', 12422564, 'Veterinarian',65000);
+INSERT INTO vetStaff VALUES(14,3,12,'Brian','Logan','86','Grant Street','Mt Albert','Auckland','1025','0221188172',to_date('01-feb-1983','dd-mon-yyyy'), 'M', 158395677, 'Veterinarian',73000);
+INSERT INTO vetStaff VALUES(15,3,12,'Elizabeth','Blake','4','Martin Ave','Mt Albert','Auckland','1025','022196402',to_date('01-dec-1990','dd-mon-yyyy'), 'F', 449374402, 'Receptionist',55000);
+INSERT INTO vetStaff VALUES(16,3,12,'Steven','Lugo','85','Ireland Street','Westhaven','Auckland','1011','0204790404',to_date('03-mar-1993','dd-mon-yyyy'), 'F', 144493907, 'Vet Assistant',62000);
+INSERT INTO vetStaff VALUES(17,3,12,'Megan','Killinger','68','Sprott Road','St Heliers','Auckland','1071','0216710240',to_date('24-apr-1987','dd-mon-yyyy'), 'F', 315785456, 'Veterinarian',72000);
+INSERT INTO vetStaff VALUES(18,3,12,'Katherine','Rosario','141A','Short Street','Freemans Bay','Auckland','1011','0276283275',to_date('30-mar-1986','dd-mon-yyyy'), 'F', 521362933, 'Receptionist',58000);
 
-INSERT INTO vetStaff VALUES(16,4,null,'Anne','Simons','26','Moana Avenue','Onehunga','Auckland','1061','0204705672',to_date('01-mar-1980','dd-mon-yyyy'), 'F', 5593805, 'Manager',95400);
-INSERT INTO vetStaff VALUES(17,4,16,'Elan','Jeffrey','11A','Higgs Road','Mt Wellington','Auckland','1060','021345879',to_date('26-apr-1992','dd-mon-yyyy'), 'M', 4673354, 'Veterinarian',77500);
-INSERT INTO vetStaff VALUES(18,4,16,'Otis','Grace','19B','Jersey Ave','Mt Albert','Auckland','1025','022666345',to_date('19-jan-1987','dd-mon-yyyy'), 'M', 5322256, 'Veterinarian',85000);
-INSERT INTO vetStaff VALUES(19,4,16,'Leanne','Khanthee','3','Pukeranga Crescent','Ellerslie','Auckland','1051','021004376',to_date('19-sep-1997','dd-mon-yyyy'), 'F', 9837466, 'Receptionist',49000);
+INSERT INTO vetStaff VALUES(19,4,null,'Anne','Simons','26','Moana Avenue','Onehunga','Auckland','1061','0204705672',to_date('01-mar-1980','dd-mon-yyyy'), 'F', 559380532, 'Manager',95400);
+INSERT INTO vetStaff VALUES(20,4,16,'Elan','Jeffrey','11A','Higgs Road','Mt Wellington','Auckland','1060','021345879',to_date('26-apr-1992','dd-mon-yyyy'), 'M', 114673354, 'Veterinarian',77500);
+INSERT INTO vetStaff VALUES(21,4,16,'Otis','Grace','19B','Jersey Ave','Mt Albert','Auckland','1025','022666345',to_date('19-jan-1987','dd-mon-yyyy'), 'M', 165322256, 'Veterinarian',85000);
+INSERT INTO vetStaff VALUES(22,4,16,'Leanne','Khanthee','3','Pukeranga Crescent','Ellerslie','Auckland','1051','021004376',to_date('19-sep-1997','dd-mon-yyyy'), 'F', 239837466, 'Receptionist',49000);
+INSERT INTO vetStaff VALUES(23,4,20,'Sergio','Ferris','65','Laurel Street','Sandringham','Auckland','1025','0267112239',to_date('07-jul-1984','dd-mon-yyyy'), 'F', 102091548, 'Vet Assistant',72800);
 
-INSERT INTO vetStaff VALUES(20,5,null,'Kyro','Smith','19','Keats Crescent','Enderley','Hamilton','3214','020470345',to_date('26-dec-1987','dd-mon-yyyy'), 'M', 4539805, 'Manager',87000);
-INSERT INTO vetStaff VALUES(21,5,20,'Maria','Collins','11','Craig Place','Fairview Downs','Hamilton','3214','027638503',to_date('02-apr-1997','dd-mon-yyyy'), 'F', 723498, 'Veterinarian Assistant',52000);
-INSERT INTO vetStaff VALUES(22,5,20,'Jessica','Johns','24','Lloyd Drive','Nawton','Hamilton','3200','022823864',to_date('17-oct-1998','dd-mon-yyyy'), 'F', 3246564, 'Veterinarian',82500);
-INSERT INTO vetStaff VALUES(23,5,20,'Jazmin','Boyd','3','Esmae Place','Dinsdale','Hamilton','3204','0204221783',to_date('03-oct-1990','dd-mon-yyyy'), 'F', 982344, 'Receptionist',55200);
+INSERT INTO vetStaff VALUES(24,5,null,'Kyro','Smith','19','Keats Crescent','Enderley','Hamilton','3214','020470345',to_date('26-dec-1987','dd-mon-yyyy'), 'M', 264539805, 'Manager',97000);
+INSERT INTO vetStaff VALUES(25,5,20,'Maria','Collins','11','Craig Place','Fairview Downs','Hamilton','3214','027638503',to_date('02-apr-1997','dd-mon-yyyy'), 'F', 194723498, 'Vet Assistant',52000);
+INSERT INTO vetStaff VALUES(26,5,20,'Jessica','Johns','24','Lloyd Drive','Nawton','Hamilton','3200','022823864',to_date('17-oct-1998','dd-mon-yyyy'), 'F', 133246564, 'Veterinarian',82500);
+INSERT INTO vetStaff VALUES(27,5,20,'Jazmin','Boyd','3','Esmae Place','Dinsdale','Hamilton','3204','0204221783',to_date('03-oct-1990','dd-mon-yyyy'), 'F', 209823443, 'Receptionist',55200);
+INSERT INTO vetStaff VALUES(28,5,20,'Marian','Rowland','35','River Oaks Place','Te Rapa Park','Hamilton','3200','0203141123',to_date('27-feb-1975','dd-mon-yyyy'), 'F', 183246356, 'Veterinarian',75200);
+INSERT INTO vetStaff VALUES(29,5,20,'Eric','McKay','103','Ballance Street','Te Awamutu','Hamilton','3800','0204043147',to_date('12-feb-1989','dd-mon-yyyy'), 'M', 174532891, 'Veterinarian',82800);
+INSERT INTO vetStaff VALUES(30,5,20,'Wendy','Moore','245','Miro Street','Nawton','Hamilton','3200','0269614499',to_date('29-04-1991','dd-mon-yyyy'), 'F', 202091548, 'Receptionist',60500);
 
 
 CREATE TABLE pharmacy(
