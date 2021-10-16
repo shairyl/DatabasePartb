@@ -52,6 +52,11 @@ INSERT INTO animalOwner VALUES(2,'Clark','Kent','1231','Arthur rd','Mt Eden','Au
 INSERT INTO animalOwner VALUES(3,'Diana','Prince','1643','Naruto rd','New Lynn','Auckland','1261','3333333333', 1);
 INSERT INTO animalOwner VALUES(4,'John','Constantine','3451','Sasuke rd','Penrose','Auckland','1635','44444444', 2);
 INSERT INTO animalOwner VALUES(5,'Barry','Allen','3451','Metropolis','Hamilton','Hamilton','1635','44444444', 2);
+INSERT INTO animalOwner VALUES(6,'Jake','Dillon','165','Vanderbilt Parade','Northcross','North Shore','0632','(026) 7020-774', 3);
+INSERT INTO animalOwner VALUES(7,'Katherine','Watts','75','Monarch Grove','Haywards','Lower Hutt','5018','(029) 0705-748', 5);
+INSERT INTO animalOwner VALUES(8,'Daniel','Gillen','225','Kauae Place','Whakarewarewa','Rotorua','3010','(020) 5295-859', 5);
+INSERT INTO animalOwner VALUES(9,'John','Jones','154','Arundel Crescent','Motu Rimu','Invercargill','9812','(027) 3821-471', 4);
+INSERT INTO animalOwner VALUES(10,'James','Diaz','132','Taylor Street','Maungatapu','Tauranga','9812','(020) 9115-743', 4);
 
 CREATE TABLE vetStaff(
 staffID NUMBER(5) NOT NULL,
@@ -270,6 +275,7 @@ INSERT INTO vetTreatment VALUES(6,'Cream',80);
 INSERT INTO vetTreatment VALUES(7,'anitibiotic course',60);
 INSERT INTO vetTreatment VALUES(8,'feline hysterectomy',400);
 INSERT INTO vetTreatment VALUES(9,'Vaccination',20);
+INSERT INTO vetTreatment VALUES(10,'treatment charge',20);
 
 
 CREATE TABLE animalPatients(
@@ -292,7 +298,10 @@ INSERT INTO animalPatients VALUES(4,'Golden Retriever','has a broken limb',to_da
 INSERT INTO animalPatients VALUES(5,'German Shepherd','has a damaged eye',to_date('17-feb-2018','dd-mon-yyyy'), to_date('09-nov-2021','dd-mon-yyyy'), 1,3);
 INSERT INTO animalPatients VALUES(6,'Pit Bull','has a damaged ear',to_date('14-oct-2019','dd-mon-yyyy'), to_date('27-nov-2021','dd-mon-yyyy'), 3,3);
 INSERT INTO animalPatients VALUES(7,'Husky','has a damaged nose',to_date('29-mar-2020','dd-mon-yyyy'), to_date('26-aug-2021','dd-mon-yyyy'), 4, 2);
-
+INSERT INTO animalPatients VALUES(8,'Bordercollie','intelligent',to_date('15-mar-2020','dd-mon-yyyy'), to_date('23-aug-2021','dd-mon-yyyy'), 5, 5);
+INSERT INTO animalPatients VALUES(9,'German Shepherd','very sensible',to_date('15-jan-2020','dd-mon-yyyy'), to_date('23-feb-2021','dd-mon-yyyy'), 6, 5);
+INSERT INTO animalPatients VALUES(10,'Poodle','is friendly',to_date('11-feb-2020','dd-mon-yyyy'), to_date('01-jun-2021','dd-mon-yyyy'), 7, 4);
+INSERT INTO animalPatients VALUES(11,'rottweiler','is Aggressive',to_date('11-dec-2020','dd-mon-yyyy'), to_date('01-jan-2021','dd-mon-yyyy'), 8, 2);
 
 CREATE TABLE vetExamination(
 examinationID NUMBER(5) NOT NULL, 
@@ -308,33 +317,47 @@ CONSTRAINT vetExam_staffID_fk FOREIGN KEY (clinicID) REFERENCES vetStaff(staffID
 CONSTRAINT vetExam_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
 
-INSERT INTO vetExamination VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'12:15:21','No Treatment Needed',1,2,2);
+INSERT INTO vetExamination VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'12:15:21','No severe Treatment Needed',1,2,2);
 INSERT INTO vetExamination VALUES(2,to_date('12-jan-2021','dd-mon-yyyy'),'13:30:34','Give vaccine',2,1,1);
 INSERT INTO vetExamination VALUES(3,to_date('21-aug-2021','dd-mon-yyyy'),'16:23:35','Ear needs treatment',5,3,1);
 INSERT INTO vetExamination VALUES(4,to_date('14-jan-2021','dd-mon-yyyy'),'14:14:37','eye needs treatment',4,1,1);
 INSERT INTO vetExamination VALUES(5,to_date('13-may-2021','dd-mon-yyyy'),'21:12:39','nose needs treatment',7,3,2);
+INSERT INTO vetExamination VALUES(6,to_date('14-jun-2021','dd-mon-yyyy'),'23:02:30','stool sample may be needed',8,26,2);
+INSERT INTO vetExamination VALUES(7,to_date('17-jul-2021','dd-mon-yyyy'),'13:22:31','very healthy',9,3,4);
+INSERT INTO vetExamination VALUES(8,to_date('17-aug-2021','dd-mon-yyyy'),'10:21:31','Pet is very young',10,1,5);
 
 
 CREATE TABLE animalTreatment(
 examinationID NUMBER(5) NOT NULL, 
 treatmentID NUMBER(5) NOT NULL, 
-treatmentStartDate DATE NOT NULL, 
-treatmentEndDate DATE NOT NULL, 
-quantityOfTreatment NUMBER(10) NOT NULL, 
+treatmentStartDate DATE, 
+treatmentEndDate DATE, 
+quantityOfTreatment NUMBER(10), 
 treatmentComments VARCHAR2(255),
 CONSTRAINT animalTreat_pk PRIMARY KEY (examinationID, treatmentID),
 CONSTRAINT animalTreat_examinationID_fk FOREIGN KEY (examinationID) REFERENCES vetExamination(examinationID),
 CONSTRAINT animalTreat_treatmentID_fk FOREIGN KEY (treatmentID) REFERENCES vetTreatment(treatmentID)
 );
 
-INSERT INTO animalTreatment VALUES(1,1,to_date('2-feb-2021','dd-mon-yyyy'),to_date('12-feb-2021','dd-mon-yyyy'),1,'come back to clinic for reassesment');
-INSERT INTO animalTreatment VALUES(2,3,to_date('7-mar-2021','dd-mon-yyyy'),to_date('18-mar-2021','dd-mon-yyyy'),1,null);
-INSERT INTO animalTreatment VALUES(3,4,to_date('25-jan-2021','dd-mon-yyyy'),to_date('30-jan-2021','dd-mon-yyyy'),1,'give healthy food');
+INSERT INTO animalTreatment VALUES(1,1,to_date('11-oct-2021','dd-mon-yyyy'),to_date('12-feb-2021','dd-mon-yyyy'),1,'come back to clinic for reassesment');
+INSERT INTO animalTreatment VALUES(1,10,null,null,null,null);
+INSERT INTO animalTreatment VALUES(2,3,to_date('12-jan-2021','dd-mon-yyyy'),to_date('18-mar-2021','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES(2,10,null,null,null,null);
+INSERT INTO animalTreatment VALUES(3,4,to_date('21-aug-2021','dd-mon-yyyy'),to_date('30-jan-2021','dd-mon-yyyy'),1,'give healthy food');
+INSERT INTO animalTreatment VALUES(3,10,null,null,null,null);
 INSERT INTO animalTreatment VALUES(1,2,to_date('10-nov-2021','dd-mon-yyyy'),to_date('19-nov-2021','dd-mon-yyyy'),1,'more antibiotics');
-INSERT INTO animalTreatment VALUES(4,9,to_date('2-may-2021','dd-mon-yyyy'),to_date('9-may-2021','dd-mon-yyyy'),1,null);
-INSERT INTO animalTreatment VALUES(4,8,to_date('13-apr-2021','dd-mon-yyyy'),to_date('19-apr-2021','dd-mon-yyyy'),2,null);
-INSERT INTO animalTreatment VALUES(5,7,to_date('12-jun-2021','dd-mon-yyyy'),to_date('20-jun-2021','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES(4,9,to_date('14-jan-2021','dd-mon-yyyy'),to_date('9-may-2021','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES(4,10,null,null,null,null);
+INSERT INTO animalTreatment VALUES(4,8,to_date('14-jan-2021','dd-mon-yyyy'),to_date('19-apr-2021','dd-mon-yyyy'),2,null);
+INSERT INTO animalTreatment VALUES(5,7,to_date('13-may-2021','dd-mon-yyyy'),to_date('20-jun-2021','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES(5,10,null,null,null,null);
 INSERT INTO animalTreatment VALUES(5,8,to_date('11-feb-2021','dd-mon-yyyy'),to_date('20-feb-2021','dd-mon-yyyy'),1,'ready');
+INSERT INTO animalTreatment VALUES(6,1,to_date('11-jan-2021','dd-mon-yyyy'),to_date('12-jan-2021','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES(6,10,null,null,null,null);
+INSERT INTO animalTreatment VALUES(7,2,to_date('17-jul-2021','dd-mon-yyyy'),to_date('17-jul-2021','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES(7,10,null,null,null,null);
+INSERT INTO animalTreatment VALUES(8,3,to_date('18-aug-2021','dd-mon-yyyy'),to_date('18-sep-2021','dd-mon-yyyy'),1,null);
+INSERT INTO animalTreatment VALUES(8,10,null,null,null,null);
 
 CREATE TABLE invoice(
 invoiceID NUMBER(5) NOT NULL, 
@@ -346,11 +369,14 @@ CONSTRAINT invoice_invoiceID_pk PRIMARY KEY (invoiceID),
 CONSTRAINT invoice_examinationID_fk FOREIGN KEY (examinationID) REFERENCES vetExamination(examinationID)
 );
 
-INSERT INTO Invoice VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'debit',1, 1);
-INSERT INTO Invoice VALUES(2,to_date('12-jan-2021','dd-mon-yyyy'),'credit',2,  2);
+INSERT INTO Invoice VALUES(1,to_date('2-feb-2021','dd-mon-yyyy'),'debit',1, 1);
+INSERT INTO Invoice VALUES(2,to_date('7-mar-2021','dd-mon-yyyy'),'credit',2,  2);
 INSERT INTO Invoice VALUES(3,to_date('21-aug-2021','dd-mon-yyyy'),'cash',3,  1);
 INSERT INTO Invoice VALUES(4,to_date('14-jan-2021','dd-mon-yyyy'),'debit',4,  4);
 INSERT INTO Invoice VALUES(5,to_date('13-may-2021','dd-mon-yyyy'),'credit',5,  4);
+INSERT INTO Invoice VALUES(6,to_date('11-jan-2021','dd-mon-yyyy'),'cash',6,  4);
+INSERT INTO Invoice VALUES(7,to_date('17-jul-2021','dd-mon-yyyy'),'credit',7,  4);
+INSERT INTO Invoice VALUES(8,to_date('18-aug-2021','dd-mon-yyyy'),'debit',8,  4);
 
 
 
