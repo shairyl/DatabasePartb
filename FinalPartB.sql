@@ -20,19 +20,20 @@ clinicStreetNo VARCHAR2(10) NOT NULL,
 clinicStreetName VARCHAR2(25) NOT NULL,
 clinicSuburb VARCHAR2(25) NOT NULL,
 clinicCity VARCHAR2(25) NOT NULL,
-clinicPostcode NUMBER(5) NOT NULL,
-clinicPhoneNo NUMBER(15) NOT NULL,
+clinicPostcode VARCHAR2(5) NOT NULL,
+clinicPhoneNo VARCHAR2(15) NOT NULL,
 clinicEmail VARCHAR2(30) NOT NULL,
-CONSTRAINT vetClinic_clinicphone_chk CHECK (clinicPhoneNo < 15 AND clinicPhoneNo > 7);
-CONSTRAINT vetClinic_clinicpostcode_chk CHECK (clinicPostcode = 4);
+CONSTRAINT vetClinic_clinicphone_chk CHECK (LENGTH(clinicPhoneNo) < 15 AND LENGTH(clinicPhoneNo) > 7),
+CONSTRAINT vetClinic_clinicpostcode_chk CHECK (LENGTH(clinicPostcode) = 4),
 CONSTRAINT vetClinic_clinicID_pk PRIMARY KEY (clinicID)
 );
 
-INSERT INTO vetClinic VALUES(1,'181','Onewa Road','Birkenhead','Auckland',0626,094812376,'birkenhead@kiwivet.co.nz');
-INSERT INTO vetClinic VALUES(2,'580','New North Road','Morningside','Auckland',1021,098159978,'morningside@kiwivet.co.nz');
-INSERT INTO vetClinic VALUES(3,'3162','Great North Road','New Lynn','Auckland',0600,096007684,'newlynn@kiwivet.co.nz');
-INSERT INTO vetClinic VALUES(4,'359','Church Street','Penrose','Auckland',1061,095257655,'penrose@kiwivet.co.nz');
-INSERT INTO vetClinic VALUES(5,'639','Te Rapa Road','Te Rapa','Hamilton',3200,07767543,'terapa@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(1,'181','Onewa Road','Birkenhead','Auckland','0626','094812376','birkenhead@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(2,'580','New North Road','Morningside','Auckland','1021','098159978','morningside@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(3,'3162','Great North Road','New Lynn','Auckland','0600','096007684','newlynn@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(4,'359','Church Street','Penrose','Auckland','1061','095257655','penrose@kiwivet.co.nz');
+INSERT INTO vetClinic VALUES(5,'639','Te Rapa Road','Te Rapa','Hamilton','3200','07767543','terapa@kiwivet.co.nz');
+
 
 CREATE TABLE animalOwner(
 ownerID NUMBER(5) NOT NULL, 
@@ -45,22 +46,22 @@ ownerCity VARCHAR2(25) NOT NULL,
 ownerPostcode VARCHAR2(5) NOT NULL, 
 ownerPhoneNo VARCHAR2(15) NOT NULL, 
 clinicID NUMBER(5) NOT NULL,
-CONSTRAINT animalOwner_ownerphone_chk CHECK (ownerPhoneNo < 15 AND ownerPhoneNo > 7);
-CONSTRAINT animalOwner_ownerpostcode_chk CHECK (ownerPostcode = 4);
+CONSTRAINT animalOwner_ownerphone_chk CHECK (ownerPhoneNo < 15 AND ownerPhoneNo > 7),
+CONSTRAINT animalOwner_ownerpostcode_chk CHECK (ownerPostcode = 4),
 CONSTRAINT animalOwner_ownerID_pk PRIMARY KEY (ownerID),
 CONSTRAINT animalOwner_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
 
-INSERT INTO animalOwner VALUES(1,'Bruce','Wayne','1342','hillsborough rd','Mt Roskill','Auckland','1041','(027) 4990-156', 1);
-INSERT INTO animalOwner VALUES(2,'Clark','Kent','1231','Arthur rd','Mt Eden','Auckland','1234','(027) 6488-917', 2);
-INSERT INTO animalOwner VALUES(3,'Diana','Prince','1643','Naruto rd','New Lynn','Auckland','1261','	(028) 3086-548', 1);
-INSERT INTO animalOwner VALUES(4,'John','Constantine','3451','Sasuke rd','Penrose','Auckland','1635','(029) 1650-554', 2);
-INSERT INTO animalOwner VALUES(5,'Barry','Allen','3451','Metropolis','Hamilton','Hamilton','1635','44444444', 2);
-INSERT INTO animalOwner VALUES(6,'Jake','Dillon','165','Vanderbilt Parade','Northcross','North Shore','0632','(026) 7020-774', 3);
-INSERT INTO animalOwner VALUES(7,'Katherine','Watts','75','Monarch Grove','Haywards','Lower Hutt','5018','(029) 0705-748', 5);
-INSERT INTO animalOwner VALUES(8,'Daniel','Gillen','225','Kauae Place','Whakarewarewa','Rotorua','3010','(020) 5295-859', 5);
-INSERT INTO animalOwner VALUES(9,'John','Jones','154','Arundel Crescent','Motu Rimu','Invercargill','9812','(027) 3821-471', 4);
-INSERT INTO animalOwner VALUES(10,'James','Diaz','132','Taylor Street','Maungatapu','Tauranga','9812','(020) 9115-743', 4);
+INSERT INTO animalOwner VALUES(1,'Bruce','Wayne','1342','hillsborough rd','Mt Roskill','Auckland','1041','0274990156', 1);
+INSERT INTO animalOwner VALUES(2,'Clark','Kent','1231','Arthur rd','Mt Eden','Auckland','1234','0276488917', 2);
+INSERT INTO animalOwner VALUES(3,'Diana','Prince','1643','Naruto rd','New Lynn','Auckland','1261','0283086548', 1);
+INSERT INTO animalOwner VALUES(4,'John','Constantine','3451','Sasuke rd','Penrose','Auckland','1635','0291650554', 2);
+INSERT INTO animalOwner VALUES(5,'Barry','Allen','3451','Metropolis','Hamilton','Hamilton','1635','0276015473', 2);
+INSERT INTO animalOwner VALUES(6,'Jake','Dillon','165','Vanderbilt Parade','Northcross','North Shore','0632','0267020774', 3);
+INSERT INTO animalOwner VALUES(7,'Katherine','Watts','75','Monarch Grove','Haywards','Lower Hutt','5018','0290705-748', 5);
+INSERT INTO animalOwner VALUES(8,'Daniel','Gillen','225','Kauae Place','Whakarewarewa','Rotorua','3010','0205295859', 5);
+INSERT INTO animalOwner VALUES(9,'John','Jones','154','Arundel Crescent','Motu Rimu','Invercargill','9812','0273821471', 4);
+INSERT INTO animalOwner VALUES(10,'James','Diaz','132','Taylor Street','Maungatapu','Tauranga','9812','0209115743', 4);
 
 CREATE TABLE vetStaff(
 staffID NUMBER(5) NOT NULL,
