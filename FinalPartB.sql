@@ -300,27 +300,29 @@ INSERT INTO animalPatients VALUES(10,'Poodle','is friendly',to_date('11-feb-2020
 INSERT INTO animalPatients VALUES(11,'rottweiler','is Aggressive',to_date('11-dec-2020','dd-mon-yyyy'), to_date('01-jan-2021','dd-mon-yyyy'), 8, 2);
 
 CREATE TABLE vetExamination(
-examinationID NUMBER(5) NOT NULL, 
-examDate DATE NOT NULL, 
-examTime CHAR(8) NOT NULL, 
-examDescription VARCHAR2(255) NOT NULL, 
-animalID NUMBER(5) NOT NULL, 
+examinationID NUMBER(5) NOT NULL,
+examDateTime DATE NOT NULL,
+examDescription VARCHAR2(255) NOT NULL,
+animalID NUMBER(5) NOT NULL,
 staffID NUMBER(5) NOT NULL,
 clinicID NUMBER(5) NOT NULL,
+CONSTRAINT vetExamination_vetExamination_chk CHECK (examDate > sysdate()),
 CONSTRAINT vetExam_examinationID_pk PRIMARY KEY (examinationID),
 CONSTRAINT vetExam_animalID_fk FOREIGN KEY (animalID) REFERENCES animalPatients(animalID),
 CONSTRAINT vetExam_staffID_fk FOREIGN KEY (clinicID) REFERENCES vetStaff(staffID),
 CONSTRAINT vetExam_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
 
-INSERT INTO vetExamination VALUES(1,to_date('11-oct-2021','dd-mon-yyyy'),'12:15:21','No severe Treatment Needed',1,2,2);
-INSERT INTO vetExamination VALUES(2,to_date('12-jan-2021','dd-mon-yyyy'),'13:30:34','Give vaccine',2,1,1);
-INSERT INTO vetExamination VALUES(3,to_date('21-aug-2021','dd-mon-yyyy'),'16:23:35','Ear needs treatment',5,3,1);
-INSERT INTO vetExamination VALUES(4,to_date('14-jan-2021','dd-mon-yyyy'),'14:14:37','eye needs treatment',4,1,1);
-INSERT INTO vetExamination VALUES(5,to_date('13-may-2021','dd-mon-yyyy'),'21:12:39','nose needs treatment',7,3,2);
-INSERT INTO vetExamination VALUES(6,to_date('14-jun-2021','dd-mon-yyyy'),'23:02:30','stool sample may be needed',8,26,2);
-INSERT INTO vetExamination VALUES(7,to_date('17-jul-2021','dd-mon-yyyy'),'13:22:31','very healthy',9,3,4);
-INSERT INTO vetExamination VALUES(8,to_date('17-aug-2021','dd-mon-yyyy'),'10:21:31','Pet is very young',10,1,5);
+
+
+INSERT INTO vetExamination VALUES(1,to_date('11-oct-2021 12:15:21','dd-mon-yyyy HH24:MI:SS'),'No severe Treatment Needed',1,2,2);
+INSERT INTO vetExamination VALUES(2,to_date('12-jan-2021 13:30:34','dd-mon-yyyy HH24:MI:SS'),'Give vaccine',2,1,1);
+INSERT INTO vetExamination VALUES(3,to_date('21-aug-2021 16:23:35','dd-mon-yyyy HH24:MI:SS'),'Ear needs treatment',5,3,1);
+INSERT INTO vetExamination VALUES(4,to_date('14-jan-2021 14:14:37','dd-mon-yyyy HH24:MI:SS'),'eye needs treatment',4,1,1);
+INSERT INTO vetExamination VALUES(5,to_date('13-may-2021 21:12:39','dd-mon-yyyy HH24:MI:SS'),'nose needs treatment',7,3,2);
+INSERT INTO vetExamination VALUES(6,to_date('14-jun-2021 23:02:30','dd-mon-yyyy HH24:MI:SS'),'stool sample may be needed',8,26,2);
+INSERT INTO vetExamination VALUES(7,to_date('17-jul-2021 13:22:31','dd-mon-yyyy HH24:MI:SS'),'very healthy',9,3,4);
+INSERT INTO vetExamination VALUES(8,to_date('17-aug-2021 10:21:31','dd-mon-yyyy HH24:MI:SS'),'Pet is very young',10,1,5);
 
 
 CREATE TABLE animalTreatment(
