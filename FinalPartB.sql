@@ -23,8 +23,8 @@ clinicCity VARCHAR2(25) NOT NULL,
 clinicPostcode NUMBER(5) NOT NULL,
 clinicPhoneNo NUMBER(15) NOT NULL,
 clinicEmail VARCHAR2(30) NOT NULL,
-CONSTRAINT vetClinic_clinicphone_chk CHECK (clinicPhoneNo < 15 AND clinicPhoneNo > 7);
-CONSTRAINT vetClinic_clinicpostcode_chk CHECK (clinicPostcode = 4);
+CONSTRAINT vetClinic_clinicphone_chk CHECK (clinicPhoneNo < 15 AND clinicPhoneNo > 7),
+CONSTRAINT vetClinic_clinicpostcode_chk CHECK (clinicPostcode = 4),
 CONSTRAINT vetClinic_clinicID_pk PRIMARY KEY (clinicID)
 );
 
@@ -45,8 +45,8 @@ ownerCity VARCHAR2(25) NOT NULL,
 ownerPostcode VARCHAR2(5) NOT NULL, 
 ownerPhoneNo VARCHAR2(15) NOT NULL, 
 clinicID NUMBER(5) NOT NULL,
-CONSTRAINT animalOwner_ownerphone_chk CHECK (ownerPhoneNo < 15 AND ownerPhoneNo > 7);
-CONSTRAINT animalOwner_ownerpostcode_chk CHECK (ownerPostcode = 4);
+CONSTRAINT animalOwner_ownerphone_chk CHECK (ownerPhoneNo < 15 AND ownerPhoneNo > 7),
+CONSTRAINT animalOwner_ownerpostcode_chk CHECK (ownerPostcode = 4),
 CONSTRAINT animalOwner_ownerID_pk PRIMARY KEY (ownerID),
 CONSTRAINT animalOwner_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
@@ -79,6 +79,9 @@ staffGender CHAR(1) NOT NULL,
 staffIRN NUMBER(9) NOT NULL,
 staffRole VARCHAR2(20) NOT NULL,
 annualSalary NUMBER(7) NOT NULL,
+CONSTRAINT vetStaff_staffphone_chk CHECK (staffPhoneNo < 15 AND staffPhoneNo > 7),
+CONSTRAINT vetStaff_staffpostcode_chk CHECK (staffPostcode = 4),
+CONSTRAINT vetStaff_staffirn_chk CHECK (staffIRN = 9),
 CONSTRAINT vetStaff_staffID_pk PRIMARY KEY (staffID),
 CONSTRAINT vetStaff_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID),
 CONSTRAINT vetStaff_managerID_fk FOREIGN KEY (managerID) REFERENCES vetStaff(staffID)
@@ -162,6 +165,7 @@ itemQuantityStock NUMBER(5) NOT NULL,
 itemReorderLevel NUMBER(5) NOT NULL,
 itemReorderQuantity NUMBER(5) NOT NULL,
 itemCost NUMBER(5) NOT NULL,
+CONSTRAINT itemStock_itemCost_chk CHECK (itemCost > 0),
 CONSTRAINT itemStock_pk PRIMARY KEY (clinicID, itemID),
 CONSTRAINT itemStock_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID),
 CONSTRAINT itemStock_itemID_fk FOREIGN KEY (itemID) REFERENCES item(itemID)
@@ -216,6 +220,7 @@ pharmaQuantityStock NUMBER(5) NOT NULL,
 itemReorderLevel NUMBER(5) NOT NULL,
 pharmaReorderQuantity NUMBER(5) NOT NULL,
 pharmaCost NUMBER(5) NOT NULL,
+CONSTRAINT pharmacyStock_pharmaCost_chk CHECK (pharmaCost > 0),
 CONSTRAINT pharmaStock_pk PRIMARY KEY (clinicID, drugID),
 CONSTRAINT pharmaStock_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID),
 CONSTRAINT pharmaStock_drugID_fk FOREIGN KEY (drugID) REFERENCES pharmacy(drugID)
@@ -268,6 +273,7 @@ CREATE TABLE vetTreatment(
 treatmentID NUMBER(5) NOT NULL, 
 treatmentDesc VARCHAR2(255) NOT NULL, 
 treatmentCharge NUMBER(10) NOT NULL,
+CONSTRAINT vetTreatment_treatmentCharge_chk CHECK (treatmentCharge > 0),
 CONSTRAINT vetTreatment_treatmentID_pk PRIMARY KEY (treatmentID) 
 );
 
@@ -290,6 +296,7 @@ animalDOB DATE NOT NULL,
 registrationDate DATE NOT NULL, 
 ownerID NUMBER(5), 
 clinicID NUMBER(5),
+CONSTRAINT animalPatients_registrationDate_chk CHECK (registrationDate > sysdate()),
 CONSTRAINT animalPatients_animalID_pk PRIMARY KEY (animalID),
 CONSTRAINT animalPatients_ownerID_fk FOREIGN KEY (ownerID) REFERENCES animalOwner(ownerID),
 CONSTRAINT animalPatients_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
@@ -315,6 +322,7 @@ examDescription VARCHAR2(255) NOT NULL,
 animalID NUMBER(5) NOT NULL, 
 staffID NUMBER(5) NOT NULL,
 clinicID NUMBER(5) NOT NULL,
+CONSTRAINT vetExamination_vetExamination_chk CHECK (examDate > sysdate()),
 CONSTRAINT vetExam_examinationID_pk PRIMARY KEY (examinationID),
 CONSTRAINT vetExam_animalID_fk FOREIGN KEY (animalID) REFERENCES animalPatients(animalID),
 CONSTRAINT vetExam_staffID_fk FOREIGN KEY (clinicID) REFERENCES vetStaff(staffID),
