@@ -379,7 +379,6 @@ INSERT INTO Invoice VALUES(7,to_date('17-jul-2021','dd-mon-yyyy'),'credit',7,  4
 INSERT INTO Invoice VALUES(8,to_date('18-aug-2021','dd-mon-yyyy'),'debit',8,  4);
 
 
-
 SELECT * FROM animalowner;
 SELECT * FROM vetexamination;
 SELECT * FROM animaltreatment;
