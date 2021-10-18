@@ -23,6 +23,8 @@ clinicCity VARCHAR2(25) NOT NULL,
 clinicPostcode NUMBER(5) NOT NULL,
 clinicPhoneNo NUMBER(15) NOT NULL,
 clinicEmail VARCHAR2(30) NOT NULL,
+CONSTRAINT vetClinic_clinicphone_chk CHECK (clinicPhoneNo < 15 AND clinicPhoneNo > 7);
+CONSTRAINT vetClinic_clinicpostcode_chk CHECK (clinicPostcode = 4);
 CONSTRAINT vetClinic_clinicID_pk PRIMARY KEY (clinicID)
 );
 
@@ -43,14 +45,16 @@ ownerCity VARCHAR2(25) NOT NULL,
 ownerPostcode VARCHAR2(5) NOT NULL, 
 ownerPhoneNo VARCHAR2(15) NOT NULL, 
 clinicID NUMBER(5) NOT NULL,
+CONSTRAINT animalOwner_ownerphone_chk CHECK (ownerPhoneNo < 15 AND ownerPhoneNo > 7);
+CONSTRAINT animalOwner_ownerpostcode_chk CHECK (ownerPostcode = 4);
 CONSTRAINT animalOwner_ownerID_pk PRIMARY KEY (ownerID),
 CONSTRAINT animalOwner_clinicID_fk FOREIGN KEY (clinicID) REFERENCES vetClinic(clinicID)
 );
 
-INSERT INTO animalOwner VALUES(1,'Bruce','Wayne','1342','hillsborough rd','Mt Roskill','Auckland','1041','111111111', 1);
-INSERT INTO animalOwner VALUES(2,'Clark','Kent','1231','Arthur rd','Mt Eden','Auckland','1234','222222222', 2);
-INSERT INTO animalOwner VALUES(3,'Diana','Prince','1643','Naruto rd','New Lynn','Auckland','1261','3333333333', 1);
-INSERT INTO animalOwner VALUES(4,'John','Constantine','3451','Sasuke rd','Penrose','Auckland','1635','44444444', 2);
+INSERT INTO animalOwner VALUES(1,'Bruce','Wayne','1342','hillsborough rd','Mt Roskill','Auckland','1041','(027) 4990-156', 1);
+INSERT INTO animalOwner VALUES(2,'Clark','Kent','1231','Arthur rd','Mt Eden','Auckland','1234','(027) 6488-917', 2);
+INSERT INTO animalOwner VALUES(3,'Diana','Prince','1643','Naruto rd','New Lynn','Auckland','1261','	(028) 3086-548', 1);
+INSERT INTO animalOwner VALUES(4,'John','Constantine','3451','Sasuke rd','Penrose','Auckland','1635','(029) 1650-554', 2);
 INSERT INTO animalOwner VALUES(5,'Barry','Allen','3451','Metropolis','Hamilton','Hamilton','1635','44444444', 2);
 INSERT INTO animalOwner VALUES(6,'Jake','Dillon','165','Vanderbilt Parade','Northcross','North Shore','0632','(026) 7020-774', 3);
 INSERT INTO animalOwner VALUES(7,'Katherine','Watts','75','Monarch Grove','Haywards','Lower Hutt','5018','(029) 0705-748', 5);
